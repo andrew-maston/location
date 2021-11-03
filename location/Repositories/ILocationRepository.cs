@@ -8,5 +8,6 @@ namespace location.Controllers
     {
         Task<UserLocation> InsertAsync(UserLocation location);
         IQueryable<UserLocation> GetCurrentLocation(IQueryable<User> user);
+        IQueryable<UserLocation> GetLocationHistory(IQueryable<User> user);
     }
 }

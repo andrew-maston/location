@@ -37,6 +37,24 @@ namespace location.Controllers
             return currentLocation;
         }
 
+        public IQueryable<UserLocation> GetLocationHistory(IQueryable<User> user)
+        {
+            IQueryable<UserLocation> locationHistory = null;
+
+            try
+            {
+                locationHistory = user
+                   .Include(user => user.Locations)
+                   .SelectMany(user => user.Locations.OrderByDescending(l => l.Timestamp));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred whilst retrieving location history", user.FirstOrDefault().Id, user.FirstOrDefault().Username);
+            }
+
+            return locationHistory;
+        }
+
         public async Task<UserLocation> InsertAsync(UserLocation location)
         {
             location.Timestamp = DateTime.UtcNow;
