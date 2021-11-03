@@ -2,15 +2,16 @@
 
 namespace location.Models.Dtos
 {
-    public class LocationResponse
+    public class SearchResult
     {
-        public LocationResponse(User user, UserLocation location)
+        public SearchResult(User user, UserLocation location, double? distance = null)
         {
             UserId = user.Id;
             Username = user.Username;
             Latitude = location.Location.Y;
             Longitude = location.Location.X;
             Timestamp = location.Timestamp;
+            Distance = distance;
         }
 
         public Guid UserId { get; set; }
@@ -18,5 +19,6 @@ namespace location.Models.Dtos
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public DateTime Timestamp { get; set; }
+        public double? Distance { get; set; }
     }
 }

@@ -26,7 +26,8 @@ namespace location.Controllers
             {
                currentLocation = user
                   .Include(user => user.Locations)
-                  .SelectMany(user => user.Locations.OrderByDescending(l => l.Timestamp).Take(1));
+                  .SelectMany(user => user.Locations.OrderByDescending(l => l.Timestamp).Take(1))
+                  .Include(location => location.User);
             }
             catch(Exception ex)
             {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace location.Controllers
+namespace location.Models.Dtos
 {
     public class CreateUserRequest
     {

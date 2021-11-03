@@ -9,5 +9,6 @@ namespace location.Controllers
     {
         Task<User> InsertAsync(User user);
         IQueryable<User> Get(Guid userId);
+        IQueryable<User> GetAll();
     }
 }

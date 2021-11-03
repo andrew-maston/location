@@ -49,5 +49,19 @@ namespace location.Controllers
 
             return user;
         }
+
+        public IQueryable<User> GetAll()
+        {
+            try
+            {
+                return _context.Users;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred whilst retrieving users");
+            }
+
+            return null;
+        }
     }
 }
